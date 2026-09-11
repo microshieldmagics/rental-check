@@ -922,11 +922,7 @@ function bindRequestListener(rental, target) {
   const requestId = `${currentUser.uid}_${rental.id}`;
   requestListenerUnsub = onSnapshot(doc(db, "requests", requestId), (snap) => {
     if (!snap.exists()) {
-      if (isTermsAccepted(rental.id)) {
-        renderPaymentQrView(target, rental, 'unpaid');
-      } else {
-        renderTermsGateView(target, rental);
-      }
+      renderTermsGateView(target, rental);
       return;
     }
     const data = snap.data();
