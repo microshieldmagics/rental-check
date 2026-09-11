@@ -1,0 +1,1389 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dhangadhi Room Rental — Find Your Perfect Space</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Work+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['"Work Sans"', 'sans-serif'],
+          display: ['"Fraunces"', 'serif'],
+          label: ['"Space Grotesk"', 'sans-serif'],
+        },
+        colors: {
+          brand:  { 50:'#EAF0EA',100:'#CFE0D0',200:'#B9D6BC',300:'#3D7D5D',400:'#2F6B49',500:'#1F4D36',600:'#153A28',700:'#0F2C1E' },
+          gold:   { 50:'#FBF6EC',100:'#F3E6C8',200:'#E4C888',300:'#C79A3D',400:'#B08D2A',500:'#96741F',600:'#6E561A' },
+          ink:    { 50:'#FBF7EE',100:'#F6EFE1',200:'#E9DCB8',300:'#241C10',400:'#33281A',500:'#6B5A3E',600:'#8A7A5C' },
+          ok:     { 50:'#F1F6EC',400:'#5C8F4C',500:'#3D6633' },
+          warn:   { 50:'#FBF6EC',400:'#C79A3D',500:'#96741F' },
+          bad:    { 50:'#FBF0F0',400:'#8C3A3A',500:'#7A2331' },
+        }
+      }
+    }
+  }
+</script>
+
+<style>
+  body{font-family:'Work Sans',sans-serif;background:#F6EFE1;color:#241C10;}
+  .card{background:rgba(255,253,248,.85);border:1px solid rgba(176,141,42,.22);box-shadow:0 6px 22px 0 rgba(43,30,10,.08);}
+  .card-hover{transition:all .25s ease;}
+  .card-hover:hover{transform:translateY(-4px);border-color:rgba(176,141,42,.5);box-shadow:0 18px 34px -12px rgba(176,141,42,.35);}
+  .glass-nav{background:rgba(246,239,225,.9);backdrop-filter:blur(16px);border-bottom:1px solid rgba(176,141,42,.2);}
+  .input{background:rgba(255,253,248,.9);border:1px solid rgba(36,28,16,.18);}
+  .input:focus{outline:none;border-color:#B08D2A;box-shadow:0 0 0 3px rgba(176,141,42,.18);}
+  .btn-primary{background:linear-gradient(90deg,#1F4D36,#2F6B49);color:#fff;}
+  .btn-primary:hover{filter:brightness(1.08);}
+  .btn-primary:disabled{opacity:.6;cursor:not-allowed;filter:none;}
+  .btn-gold{background:linear-gradient(90deg,#B08D2A,#96741F);color:#fff;}
+  .btn-gold:hover{filter:brightness(1.08);}
+  .btn-gold:disabled{opacity:.6;cursor:not-allowed;filter:none;}
+  ::-webkit-scrollbar{width:8px;}
+  ::-webkit-scrollbar-track{background:#F6EFE1;}
+  ::-webkit-scrollbar-thumb{background:#D9C89A;border-radius:4px;}
+  [data-lang="ne"]{font-family:'Noto Sans','Work Sans',sans-serif;}
+  .zoom-wrap{overflow:hidden;touch-action:none;cursor:zoom-in;}
+  .zoom-wrap.zoomed{cursor:grab;}
+  .zoom-wrap.dragging{cursor:grabbing;}
+  .video-thumb{position:relative;cursor:pointer;}
+  .video-thumb .play-badge{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.25);}
+  .lang-btn.active{background:#1F4D36;color:#fff;}
+  .lang-btn{color:#6B5A3E;}
+  .hero-blob{position:absolute;border-radius:9999px;filter:blur(60px);opacity:.35;pointer-events:none;}
+  .mini-map-wrap iframe{pointer-events:none;}
+</style>
+</head>
+
+<body class="relative overflow-x-hidden min-h-screen">
+
+<div id="toast-container" class="fixed top-5 right-5 z-[60] flex flex-col gap-3 pointer-events-none max-w-sm"></div>
+
+<!-- ================= HEADER ================= -->
+<header class="sticky top-0 z-40 glass-nav">
+  <div class="max-w-6xl mx-auto px-3 sm:px-6 h-[72px] flex items-center justify-between gap-2">
+    <a href="#home" class="flex items-center gap-2.5 sm:gap-3 group shrink-0 min-w-0">
+      <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl overflow-hidden shrink-0 bg-white">
+        <img src="https://i.postimg.cc/RVTxxhSL/image-1778915770454.jpg" alt="Dhangadhi Room Rental Logo" class="w-full h-full object-cover" onerror="this.parentElement.innerHTML='<div class=\'w-full h-full bg-gradient-to-tr from-brand-500 to-gold-400 flex items-center justify-center text-white text-lg\'><i class=\'fa-solid fa-house-chimney\'></i></div>'">
+      </div>
+      <div class="min-w-0">
+        <span class="font-display font-semibold text-sm sm:text-lg leading-tight block truncate" data-i18n="brand_name">Dhangadhi Room Rental</span>
+        <span class="text-[9px] sm:text-[10px] text-ink-500 font-medium tracking-wider uppercase max-[380px]:hidden" data-i18n="brand_tag">Find your perfect space</span>
+      </div>
+    </a>
+
+    <div class="flex items-center gap-1.5 sm:gap-3 shrink-0">
+      <!-- Language Switch -->
+      <div class="flex items-center bg-ink-100 rounded-full p-1 text-xs font-bold shrink-0">
+        <button type="button" onclick="window.setLang('en')" id="lang-btn-en" class="lang-btn px-2.5 sm:px-3 py-1.5 rounded-full transition-colors">EN</button>
+        <button type="button" onclick="window.setLang('ne')" id="lang-btn-ne" class="lang-btn px-2.5 sm:px-3 py-1.5 rounded-full transition-colors">ने</button>
+      </div>
+
+      <div id="user-badge" class="hidden items-center gap-2 card px-2 sm:px-2.5 py-1.5 rounded-full shrink-0">
+        <img id="user-avatar" src="" class="w-6 h-6 sm:w-7 sm:h-7 rounded-full object-cover">
+        <span id="user-name" class="text-xs font-bold hidden sm:inline"></span>
+        <button onclick="window.handleSignOut()" class="text-ink-500 hover:text-bad-500 text-xs ml-1" title="Sign out"><i class="fa-solid fa-right-from-bracket"></i></button>
+      </div>
+      <button id="header-login-btn" onclick="window.triggerGoogleAuth()" class="btn-primary px-3 sm:px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold shadow flex items-center gap-2 shrink-0">
+        <i class="fa-brands fa-google text-xs"></i>
+        <span class="hidden min-[420px]:inline" data-i18n="sign_in">Sign In</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section id="home" class="relative py-14 sm:py-20 overflow-hidden">
+  <div class="hero-blob w-72 h-72 bg-brand-300 -top-10 -left-10"></div>
+  <div class="hero-blob w-72 h-72 bg-gold-300 -bottom-10 -right-10"></div>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center relative">
+    <span class="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-brand-500 bg-brand-50 border border-brand-500/15 px-3.5 py-1.5 rounded-full mb-5">
+      <i class="fa-solid fa-shield-halved"></i> <span data-i18n="hero_badge">Verified listings, checked by our team</span>
+    </span>
+    <h1 class="font-display text-3xl sm:text-5xl font-semibold tracking-tight leading-tight mb-4" data-i18n="hero_title">
+      Rentals in Dhangadhi, made simple
+    </h1>
+    <p class="text-ink-500 text-sm sm:text-base max-w-xl mx-auto mb-8" data-i18n="hero_sub">
+      Browse rooms, apartments, houses, shops and offices. Every photo and video is open to view — pay a small verification fee only to unlock the owner's contact and exact location.
+    </p>
+
+    <div class="flex flex-col sm:flex-row gap-3 max-w-2xl mx-auto">
+      <div class="relative flex-1">
+        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-ink-500 text-sm"></i>
+        <input id="search-input" oninput="window.filterRentals()" type="text" data-i18n-ph="search_placeholder" placeholder="Search title or location..." class="input w-full pl-11 pr-4 py-3 rounded-xl text-sm">
+      </div>
+      <select id="category-filter" onchange="window.filterRentals()" class="input px-4 py-3 rounded-xl text-sm font-semibold cursor-pointer">
+        <option value="ALL" data-i18n="category_all">All Categories</option>
+      </select>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LISTINGS ================= -->
+<section id="listings" class="py-10 border-t border-ink-300/10">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <h2 class="font-display text-2xl sm:text-3xl font-semibold mb-8" data-i18n="listings_heading">Available Listings</h2>
+    <div id="rentals-loading" class="text-center py-10 text-ink-500 text-sm">
+      <i class="fa-solid fa-spinner animate-spin mr-2"></i><span data-i18n="loading_listings">Loading listings...</span>
+    </div>
+    <div id="rentals-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section id="about" class="py-16 border-t border-ink-300/10">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+    <div>
+      <h2 class="font-display text-2xl sm:text-3xl font-semibold mb-4" data-i18n="about_title">How it works</h2>
+      <div class="space-y-4">
+        <div class="flex items-start gap-3">
+          <div class="w-7 h-7 rounded-full bg-ok-50 text-ok-500 flex items-center justify-center text-xs shrink-0 mt-0.5"><i class="fa-solid fa-1"></i></div>
+          <p class="text-sm text-ink-400" data-i18n="how_1">Browse listings — every photo and video is open to view, no sign-in needed.</p>
+        </div>
+        <div class="flex items-start gap-3">
+          <div class="w-7 h-7 rounded-full bg-ok-50 text-ok-500 flex items-center justify-center text-xs shrink-0 mt-0.5"><i class="fa-solid fa-2"></i></div>
+          <p class="text-sm text-ink-400" data-i18n="how_2">Like what you see? Sign in with Google and fill your details once (name, phone, address, ID photo).</p>
+        </div>
+        <div class="flex items-start gap-3">
+          <div class="w-7 h-7 rounded-full bg-ok-50 text-ok-500 flex items-center justify-center text-xs shrink-0 mt-0.5"><i class="fa-solid fa-3"></i></div>
+          <p class="text-sm text-ink-400" data-i18n="how_3">Pay the small verification fee via QR and request unlock.</p>
+        </div>
+        <div class="flex items-start gap-3">
+          <div class="w-7 h-7 rounded-full bg-ok-50 text-ok-500 flex items-center justify-center text-xs shrink-0 mt-0.5"><i class="fa-solid fa-4"></i></div>
+          <p class="text-sm text-ink-400" data-i18n="how_4">Once approved, see the owner's contact and exact location on a map.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card rounded-3xl p-8 text-center">
+      <div class="w-16 h-16 bg-brand-50 text-brand-500 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4">
+        <i class="fa-solid fa-key"></i>
+      </div>
+      <h3 class="font-display text-xl font-semibold mb-2" data-i18n="about_card_title">Verified listings only</h3>
+      <p class="text-xs sm:text-sm text-ink-500 max-w-xs mx-auto" data-i18n="about_card_text">Every listing is added and checked by our team before it goes live.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact" class="py-16 border-t border-ink-300/10">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center">
+    <h2 class="font-display text-2xl sm:text-3xl font-semibold mb-8" data-i18n="contact_title">Need help?</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto">
+      <a href="https://www.facebook.com/share/1D2xZGA9V7/?mibextid=wwXIfr" target="_blank" class="card card-hover p-5 rounded-2xl flex flex-col items-center">
+        <i class="fa-brands fa-facebook text-2xl text-brand-500 mb-2"></i>
+        <span class="font-bold text-sm">Facebook</span>
+      </a>
+      <a href="https://wa.me/+9779743577999" target="_blank" class="card card-hover p-5 rounded-2xl flex flex-col items-center">
+        <i class="fa-brands fa-whatsapp text-2xl text-ok-500 mb-2"></i>
+        <span class="font-bold text-sm">WhatsApp</span>
+      </a>
+      <a href="https://www.tiktok.com/@dhangadhiroomrental?_r=1&_t=ZS-99JnAih3JNV" target="_blank" class="card card-hover p-5 rounded-2xl flex flex-col items-center">
+  <i class="fa-brands fa-tiktok text-2xl text-gold-400 mb-2"></i>
+  <span class="font-bold text-sm">TikTok</span>
+</a>
+ <a href="tel:+9779743577999" class="card card-hover p-5 rounded-2xl flex flex-col items-center">
+        <i class="fa-solid fa-phone text-2xl text-brand-500 mb-2"></i>
+        <span class="font-bold text-sm" data-i18n="call_now">Call Now</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="border-t border-ink-300/10 py-8">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-ink-500">
+    <div class="flex items-center gap-2">
+      <img src="https://i.postimg.cc/RVTxxhSL/image-1778915770454.jpg" alt="Logo" class="w-6 h-6 rounded-lg object-cover shrink-0" onerror="this.style.display='none'">
+      <span data-i18n="brand_name">Dhangadhi Room Rental</span>
+    </div>
+    <span>&copy; 2026. <span data-i18n="footer_rights">All rights reserved.</span></span>
+  </div>
+</footer>
+
+<!-- ================= RENTAL DETAIL MODAL ================= -->
+<div id="rental-modal" class="fixed inset-0 bg-ink-300/70 backdrop-blur-sm hidden items-center justify-center p-4 z-50 overflow-y-auto">
+  <div class="card rounded-3xl max-w-lg w-full p-6 my-8 relative">
+    <div class="flex items-center justify-between pb-4 border-b border-gold-400/25">
+      <div>
+        <span id="modal-category" class="font-label text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 bg-brand-50 text-brand-500 rounded-lg">Category</span>
+        <h3 id="modal-title" class="font-display text-xl font-semibold mt-2">Title</h3>
+      </div>
+      <button onclick="window.closeModal()" class="text-ink-500 hover:text-brand-500 text-xl p-2"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div id="modal-body" class="py-6">
+      <div id="modal-gallery"></div>
+      <div id="locked-section" class="pt-5 mt-4 border-t border-gold-400/15"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= PHOTO ZOOM LIGHTBOX ================= -->
+<div id="photo-lightbox" class="fixed inset-0 bg-black/90 hidden items-center justify-center z-[70] flex-col">
+  <div class="flex items-center justify-between w-full max-w-3xl px-4 py-3 text-white text-sm">
+    <span id="lightbox-counter">1 / 1</span>
+    <div class="flex items-center gap-4">
+      <button onclick="window.lightboxZoom(-0.5)" class="text-lg"><i class="fa-solid fa-magnifying-glass-minus"></i></button>
+      <button onclick="window.lightboxZoom(0.5)" class="text-lg"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
+      <button onclick="window.lightboxReset()" class="text-lg"><i class="fa-solid fa-arrows-rotate"></i></button>
+      <button onclick="window.closeLightbox()" class="text-xl"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+  </div>
+  <div class="flex-1 w-full flex items-center justify-center relative overflow-hidden">
+    <button onclick="window.lightboxNav(-1)" class="absolute left-2 sm:left-6 text-white text-2xl z-10 bg-black/30 w-10 h-10 rounded-full"><i class="fa-solid fa-chevron-left"></i></button>
+    <div id="lightbox-zoom-wrap" class="zoom-wrap w-full h-full flex items-center justify-center">
+      <img id="lightbox-img" src="" class="max-w-none select-none" draggable="false">
+    </div>
+    <button onclick="window.lightboxNav(1)" class="absolute right-2 sm:right-6 text-white text-2xl z-10 bg-black/30 w-10 h-10 rounded-full"><i class="fa-solid fa-chevron-right"></i></button>
+  </div>
+</div>
+
+<!-- ================= VIDEO PLAYER MODAL ================= -->
+<div id="video-modal" class="fixed inset-0 bg-black/90 hidden items-center justify-center z-[70] p-4">
+  <div class="w-full max-w-2xl relative">
+    <button onclick="window.closeVideo()" class="absolute -top-10 right-0 text-white text-2xl"><i class="fa-solid fa-xmark"></i></button>
+    <div class="aspect-video w-full bg-black rounded-xl overflow-hidden">
+      <div id="video-iframe-holder" class="w-full h-full"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= TERMS & DISCLAIMER MODAL ================= -->
+<div id="disclaimer-modal" class="fixed inset-0 bg-ink-300/85 backdrop-blur-sm hidden items-center justify-center p-3 sm:p-4 z-[80] overflow-y-auto">
+  <div class="card rounded-3xl max-w-2xl w-full p-5 sm:p-8 my-6 relative border-2 border-gold-400/50 shadow-2xl">
+    <div class="flex items-center gap-3 pb-4 border-b border-gold-400/25 mb-5">
+      <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-bad-50 text-bad-500 flex items-center justify-center text-xl sm:text-2xl shrink-0">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+      </div>
+      <h3 id="disclaimer-title" class="font-display text-lg sm:text-2xl font-bold leading-tight">Terms &amp; Disclaimer</h3>
+    </div>
+
+    <div id="disclaimer-body" class="space-y-4 text-xs sm:text-sm leading-relaxed max-h-[42vh] overflow-y-auto pr-1"></div>
+
+    <div class="mt-6 pt-5 border-t border-gold-400/20">
+      <label id="disclaimer-checkbox-label" class="flex items-start gap-3 mb-2 cursor-pointer select-none">
+        <input type="checkbox" id="disclaimer-checkbox" disabled class="mt-1 w-4 h-4 sm:w-5 sm:h-5 accent-brand-500 shrink-0">
+        <span id="disclaimer-declaration-text" class="text-xs sm:text-sm font-bold"></span>
+      </label>
+      <p id="disclaimer-checkbox-hint" class="text-[11px] sm:text-xs font-bold text-gold-600 ml-7 mb-5"></p>
+      <div class="flex flex-col sm:flex-row gap-3">
+        <button id="disclaimer-cancel-btn" type="button" class="flex-1 border border-ink-300/25 text-ink-500 font-bold py-3 rounded-xl text-sm">Cancel</button>
+        <button id="disclaimer-continue-btn" type="button" disabled class="flex-1 btn-gold font-bold py-3 rounded-xl text-sm"></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ==========================================================================
+// PART 1: TRANSLATIONS + UI HELPERS
+// Kept OUTSIDE the Firebase module and runs as a plain classic script, so
+// language switching, search, toasts and modals keep working even if
+// Firebase fails to load or is blocked. Note: "Dhangadhi Room Rental" is the
+// brand name and is intentionally kept in English in BOTH languages.
+// ==========================================================================
+const translations = {
+  en: {
+    brand_name: "Dhangadhi Room Rental", brand_tag: "Find your perfect space",
+    sign_in: "Sign In",
+    hero_badge: "Verified listings, checked by our team",
+    hero_title: "Rentals in Dhangadhi, made simple",
+    hero_sub: "Browse rooms, apartments, houses, shops and offices. Every photo and video is open to view — pay a small verification fee only to unlock the owner's contact and exact location.",
+    search_placeholder: "Search title or location...",
+    category_all: "All Categories",
+    listings_heading: "Available Listings",
+    loading_listings: "Loading listings...",
+    no_listings: "No listings found matching your search.",
+    view_details: "View Details",
+    monthly_rent: "Rent",
+    viewing_fee: "Fee",
+    reserved_badge: "Reserved for you",
+    about_title: "How it works",
+    how_1: "Browse listings — every photo and video is open to view, no sign-in needed.",
+    how_2: "Like what you see? Sign in with Google and fill your details once (name, phone, address, ID photo).",
+    how_3: "Pay the small verification fee via QR and request unlock.",
+    how_4: "Once approved, see the owner's contact and exact location on a map.",
+    about_card_title: "Verified listings only",
+    about_card_text: "Every listing is added and checked by our team before it goes live.",
+    contact_title: "Need help?",
+    call_now: "Call Now",
+    footer_rights: "All rights reserved.",
+    google_required_title: "Google Sign-In Required",
+    google_required_text: "Sign in with your Google account to unlock the owner's contact and exact location for this listing.",
+    continue_google: "Continue with Google",
+    profile_title: "One-Time Registration",
+    profile_sub: "Complete this once to unlock listings quickly in future.",
+    full_name: "Full Name",
+    phone_number: "Phone Number",
+    phone_required_note: "Required — the owner will use this to reach you.",
+    current_address: "Current Address",
+    id_photo: "ID / Citizenship Photo",
+    save_profile: "Save & Continue",
+    saving: "Saving...",
+    verification_charge: "Verification Charge:",
+    refund_note: "Verification fees are non-refundable once paid.",
+    payment_pending: "Payment Submitted — Awaiting Admin Verification",
+    i_have_paid: "I Have Paid — Request Unlock",
+    submitting: "Submitting...",
+    download_qr: "Download QR",
+    access_approved: "Access Approved by Admin",
+    owner_name: "Owner Name",
+    owner_phone: "Phone Number",
+    owner_email: "Email",
+    exact_address: "Exact Address",
+    instructions_label: "Instructions",
+    photos_label: "Photos",
+    videos_label: "Videos",
+    extra_label: "Additional Details",
+    no_media: "No photos or videos added yet for this listing.",
+    map_label: "Exact Location",
+    open_in_maps: "Open in Google Maps",
+    request_not_approved_title: "Request Not Approved",
+    request_not_approved_text: "Payment verification could not be confirmed. Please contact us via WhatsApp or Call for help.",
+    retry: "Retry",
+    qr_pending: "QR code pending assignment.",
+    default_qr_title: "Official Payment QR",
+    default_qr_desc: "Scan via mobile banking app to pay the verification fee.",
+    connection_issue: "Connection issue. Please refresh the page and try again.",
+    phone_invalid: "Please enter a valid phone number.",
+    disclaimer_title: "Terms & Disclaimer",
+    disclaimer_gate_text: "Before you can pay the verification fee, please read and accept our Terms & Disclaimer.",
+    disclaimer_gate_button: "Read Terms & Continue",
+    disclaimer_p1_label: "Non-Refundable Fee & Cancellation:",
+    disclaimer_p1_text: "Fees cover 30 days of room-search assistance and are strictly non-refundable. You may cancel now before proceeding, but no refunds or cancellations will be permitted after payment, including for software or technical issues (system glitches will be fixed, but no money will be refunded).",
+    disclaimer_p2_label: "Zero Liability:",
+    disclaimer_p2_text: "Dhangadhi Room Rental acts solely as an intermediary and holds zero responsibility for landlord-tenant disputes, police/legal cases, damages, or illegal acts. The client assumes 100% personal, financial, and legal liability.",
+    disclaimer_declaration_label: "Declaration:",
+    disclaimer_declaration_text: "I have read, understood, and agreed to all terms above, and I am ready to become a client of Dhangadhi Room Rental.",
+    disclaimer_wait_prefix: "Please read carefully. You can continue in",
+    disclaimer_wait_suffix: "seconds...",
+    disclaimer_ready_hint: "You may now tick the box above to continue.",
+    disclaimer_continue: "Continue to Payment",
+    disclaimer_cancel: "Cancel, I Don't Agree",
+  },
+  ne: {
+    brand_name: "Dhangadhi Room Rental", brand_tag: "आफ्नो उपयुक्त ठाउँ भेट्टाउनुहोस्",
+    sign_in: "साइन इन",
+    hero_badge: "प्रमाणित लिस्टिङ, हाम्रो टिमद्वारा जाँचिएको",
+    hero_title: "धनगढीमा भाडा, अब सजिलो",
+    hero_sub: "कोठा, अपार्टमेन्ट, घर, पसल र अफिस हेर्नुहोस्। हरेक फोटो र भिडियो सुरुदेखि नै खुला छ — मालिकको सम्पर्क र ठ्याक्कै ठेगाना खोल्न मात्र थोरै जाँच शुल्क तिर्नुहोस्।",
+    search_placeholder: "शीर्षक वा स्थान खोज्नुहोस्...",
+    category_all: "सबै श्रेणी",
+    listings_heading: "उपलब्ध भाडाहरू",
+    loading_listings: "लिस्टिङहरू लोड हुँदैछ...",
+    no_listings: "तपाईंको खोजसँग मिल्ने कुनै लिस्टिङ भेटिएन।",
+    view_details: "विवरण हेर्नुहोस्",
+    monthly_rent: "भाडा",
+    viewing_fee: "शुल्क",
+    reserved_badge: "तपाईंका लागि सुरक्षित",
+    about_title: "यसरी काम गर्छ",
+    how_1: "लिस्टिङहरू हेर्नुहोस् — हरेक फोटो र भिडियो साइन इन बिना नै खुला छ।",
+    how_2: "मन पर्यो भने गुगलबाट साइन इन गरी आफ्नो विवरण (नाम, फोन, ठेगाना, परिचयपत्र फोटो) एकपटक भर्नुहोस्।",
+    how_3: "QR मार्फत थोरै जाँच शुल्क तिरेर अनलक अनुरोध गर्नुहोस्।",
+    how_4: "स्वीकृत भएपछि मालिकको सम्पर्क र नक्सामा ठ्याक्कै स्थान हेर्नुहोस्।",
+    about_card_title: "प्रमाणित लिस्टिङ मात्र",
+    about_card_text: "प्रत्येक लिस्टिङ प्रकाशित हुनुअघि हाम्रो टिमले जाँच गर्छ।",
+    contact_title: "मद्दत चाहियो?",
+    call_now: "फोन गर्नुहोस्",
+    footer_rights: "सर्वाधिकार सुरक्षित।",
+    google_required_title: "गुगल साइन-इन आवश्यक",
+    google_required_text: "यो लिस्टिङको मालिकको सम्पर्क र ठ्याक्कै ठेगाना खोल्न कृपया गुगल खाताबाट साइन इन गर्नुहोस्।",
+    continue_google: "गुगलबाट जारी राख्नुहोस्",
+    profile_title: "एकपटकको दर्ता",
+    profile_sub: "भविष्यमा छिटो अनलक गर्न यो एकपटक पूरा गर्नुहोस्।",
+    full_name: "पूरा नाम",
+    phone_number: "फोन नम्बर",
+    phone_required_note: "आवश्यक — मालिकले तपाईंलाई सम्पर्क गर्न यो प्रयोग गर्नेछन्।",
+    current_address: "हालको ठेगाना",
+    id_photo: "परिचयपत्र फोटो",
+    save_profile: "सेभ गरी अगाडि बढ्नुहोस्",
+    saving: "सेभ हुँदैछ...",
+    verification_charge: "जाँच शुल्क:",
+    refund_note: "तिरेको जाँच शुल्क फिर्ता हुँदैन।",
+    payment_pending: "भुक्तानी पेश गरियो — प्रशासकको पुष्टिको प्रतीक्षामा",
+    i_have_paid: "मैले तिरेको छु — अनलक अनुरोध गर्नुहोस्",
+    submitting: "पेश हुँदैछ...",
+    download_qr: "QR डाउनलोड गर्नुहोस्",
+    access_approved: "प्रशासकद्वारा स्वीकृत पहुँच",
+    owner_name: "मालिकको नाम",
+    owner_phone: "फोन नम्बर",
+    owner_email: "इमेल",
+    exact_address: "ठ्याक्कै ठेगाना",
+    instructions_label: "निर्देशनहरू",
+    photos_label: "फोटोहरू",
+    videos_label: "भिडियोहरू",
+    extra_label: "थप विवरणहरू",
+    no_media: "यो लिस्टिङका लागि अझै कुनै फोटो वा भिडियो थपिएको छैन।",
+    map_label: "ठ्याक्कै स्थान",
+    open_in_maps: "गुगल म्यापमा खोल्नुहोस्",
+    request_not_approved_title: "अनुरोध स्वीकृत भएन",
+    request_not_approved_text: "भुक्तानी पुष्टि हुन सकेन। कृपया व्हाट्सएप वा फोन मार्फत सम्पर्क गर्नुहोस्।",
+    retry: "फेरि प्रयास गर्नुहोस्",
+    qr_pending: "QR कोड अझै राखिएको छैन।",
+    default_qr_title: "आधिकारिक भुक्तानी QR",
+    default_qr_desc: "जाँच शुल्क तिर्न मोबाइल बैंकिङ एपबाट स्क्यान गर्नुहोस्।",
+    connection_issue: "जडान समस्या। कृपया पृष्ठ रिफ्रेस गरी फेरि प्रयास गर्नुहोस्।",
+    phone_invalid: "कृपया मान्य फोन नम्बर हाल्नुहोस्।",
+    disclaimer_title: "शर्तहरू तथा कानूनी अस्वीकरण",
+    disclaimer_gate_text: "जाँच शुल्क तिर्नुअघि कृपया हाम्रो शर्त तथा अस्वीकरण पढी स्वीकार गर्नुहोस्।",
+    disclaimer_gate_button: "शर्तहरू पढ्नुहोस् र अगाडि बढ्नुहोस्",
+    disclaimer_p1_label: "अफिर्ता योग्य शुल्क र रद्दीकरण:",
+    disclaimer_p1_text: "यो शुल्क ३० दिनको कोठा खोजका लागि मात्र हो र भुक्तानी भइसकेपछि कुनै पनि अवस्थामा फिर्ता हुनेछैन। रद्द गर्ने भए अहिल्यै गर्नुहोस्, पछि रद्द वा रकम फिर्ता पाइनेछैन (सफ्टवेयरमा समस्या आएमा प्रणाली सुधार गरिनेछ, तर रकम फिर्ता हुनेछैन)।",
+    disclaimer_p2_label: "दायित्व मुक्ति:",
+    disclaimer_p2_text: "धनगढी रुम रेन्टल केवल मध्यस्थकर्ता हो। घरधनी र भाडामा बस्ने व्यक्तिबीचको विवाद, प्रहरी/कानूनी मुद्दा, क्षति वा गैरकानूनी कार्यको १००% जिम्मेवारी ग्राहक स्वयंको हुनेछ।",
+    disclaimer_declaration_label: "स्वीकारोक्ति:",
+    disclaimer_declaration_text: "मैले माथिका सम्पूर्ण शर्तहरू पढेर बुझेको छु र म धनगढी रुम रेन्टलको ग्राहक बन्न तयार छु।",
+    disclaimer_wait_prefix: "कृपया ध्यानपूर्वक पढ्नुहोस्। तपाईं",
+    disclaimer_wait_suffix: "सेकेन्डमा अगाडि बढ्न सक्नुहुन्छ...",
+    disclaimer_ready_hint: "अब तपाईं अगाडि बढ्न माथिको बक्समा चिन्ह लगाउन सक्नुहुन्छ।",
+    disclaimer_continue: "भुक्तानीमा जानुहोस्",
+    disclaimer_cancel: "रद्द गर्नुहोस्, म सहमत छैन",
+  }
+};
+
+let currentLang = localStorage.getItem('drs_lang') || 'en';
+
+function t(key) {
+  return (translations[currentLang] && translations[currentLang][key]) || translations.en[key] || key;
+}
+
+function applyTranslations() {
+  document.documentElement.lang = currentLang;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    el.textContent = t(el.getAttribute('data-i18n'));
+  });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+    el.placeholder = t(el.getAttribute('data-i18n-ph'));
+  });
+  const enBtn = document.getElementById('lang-btn-en');
+  const neBtn = document.getElementById('lang-btn-ne');
+  if (enBtn) enBtn.classList.toggle('active', currentLang === 'en');
+  if (neBtn) neBtn.classList.toggle('active', currentLang === 'ne');
+}
+
+// Attached to window immediately (top of a plain script), so the buttons
+// work the instant the page renders — no dependency on Firebase at all.
+window.setLang = function (lang) {
+  currentLang = lang;
+  localStorage.setItem('drs_lang', lang);
+  applyTranslations();
+  if (typeof window.filterRentals === 'function') window.filterRentals();
+  // Re-render modal if open, to keep language in sync with the current step.
+  if (window._activeRentalId && document.getElementById('rental-modal') && !document.getElementById('rental-modal').classList.contains('hidden')) {
+    if (typeof window.handleViewRental === 'function') window.handleViewRental(window._activeRentalId);
+  }
+};
+
+window.showToast = function (message, type) {
+  type = type || "info";
+  const container = document.getElementById('toast-container');
+  if (!container) return;
+  const toast = document.createElement('div');
+  const styles = {
+    success: "bg-ok-50/95 border-ok-500/40 text-ok-500",
+    error: "bg-bad-50/95 border-bad-500/35 text-bad-500",
+    info: "bg-gold-50/95 border-gold-400/40 text-gold-600"
+  };
+  const icons = { success: "fa-circle-check", error: "fa-circle-exclamation", info: "fa-circle-info" };
+  toast.className = `pointer-events-auto flex items-start gap-3 px-4 py-3 rounded-2xl border backdrop-blur-xl shadow-xl text-xs font-semibold ${styles[type] || styles.info}`;
+  toast.innerHTML = `<i class="fa-solid ${icons[type] || icons.info} mt-0.5"></i><span>${message}</span>`;
+  container.appendChild(toast);
+  setTimeout(() => { toast.classList.add('opacity-0'); setTimeout(() => toast.remove(), 300); }, 6000);
+};
+
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str || '';
+  return div.innerHTML;
+}
+window._escapeHtml = escapeHtml;
+
+// ==========================================================================
+// TERMS & DISCLAIMER MODAL (big, blocking gate before any payment step)
+// Must be visible for 30 seconds before the checkbox unlocks; only once the
+// checkbox is ticked does "Continue to Payment" become clickable.
+// ==========================================================================
+const TERMS_WAIT_SECONDS = 30;
+let disclaimerTimerInterval = null;
+let disclaimerSecondsLeft = TERMS_WAIT_SECONDS;
+
+function isTermsAccepted(rentalId) {
+  try { return localStorage.getItem(`drs_terms_accepted_${rentalId}`) === '1'; } catch (e) { return false; }
+}
+function markTermsAccepted(rentalId) {
+  try { localStorage.setItem(`drs_terms_accepted_${rentalId}`, '1'); } catch (e) {}
+}
+
+window.closeDisclaimerModal = function () {
+  if (disclaimerTimerInterval) { clearInterval(disclaimerTimerInterval); disclaimerTimerInterval = null; }
+  const modal = document.getElementById('disclaimer-modal');
+  modal.classList.add('hidden');
+  modal.classList.remove('flex');
+};
+
+function openDisclaimerModal(rental, onAgree) {
+  const modal = document.getElementById('disclaimer-modal');
+  const checkbox = document.getElementById('disclaimer-checkbox');
+  const continueBtn = document.getElementById('disclaimer-continue-btn');
+  const hint = document.getElementById('disclaimer-checkbox-hint');
+  const cancelBtn = document.getElementById('disclaimer-cancel-btn');
+
+  document.getElementById('disclaimer-title').innerText = t('disclaimer_title');
+  document.getElementById('disclaimer-body').innerHTML = `
+    <p><strong>${t('disclaimer_p1_label')}</strong> ${t('disclaimer_p1_text')}</p>
+    <p><strong>${t('disclaimer_p2_label')}</strong> ${t('disclaimer_p2_text')}</p>
+  `;
+  document.getElementById('disclaimer-declaration-text').innerHTML =
+    `<strong>${t('disclaimer_declaration_label')}</strong> &ldquo;${t('disclaimer_declaration_text')}&rdquo;`;
+  cancelBtn.innerText = t('disclaimer_cancel');
+
+  checkbox.checked = false;
+  checkbox.disabled = true;
+  continueBtn.disabled = true;
+  disclaimerSecondsLeft = TERMS_WAIT_SECONDS;
+  if (disclaimerTimerInterval) clearInterval(disclaimerTimerInterval);
+
+  function refreshContinueState() {
+    continueBtn.disabled = !(disclaimerSecondsLeft <= 0 && checkbox.checked);
+  }
+  function tick() {
+    if (disclaimerSecondsLeft > 0) {
+      hint.innerHTML = `<i class="fa-solid fa-hourglass-half mr-1"></i>${t('disclaimer_wait_prefix')} ${disclaimerSecondsLeft} ${t('disclaimer_wait_suffix')}`;
+      continueBtn.innerText = `${t('disclaimer_continue')} (${disclaimerSecondsLeft})`;
+      checkbox.disabled = true;
+    } else {
+      hint.innerHTML = `<i class="fa-solid fa-circle-check mr-1 text-ok-500"></i>${t('disclaimer_ready_hint')}`;
+      continueBtn.innerText = t('disclaimer_continue');
+      checkbox.disabled = false;
+    }
+    refreshContinueState();
+  }
+  tick();
+  disclaimerTimerInterval = setInterval(() => {
+    disclaimerSecondsLeft -= 1;
+    if (disclaimerSecondsLeft <= 0) {
+      disclaimerSecondsLeft = 0;
+      clearInterval(disclaimerTimerInterval);
+      disclaimerTimerInterval = null;
+    }
+    tick();
+  }, 1000);
+
+  checkbox.onchange = refreshContinueState;
+  continueBtn.onclick = () => {
+    if (continueBtn.disabled) return;
+    markTermsAccepted(rental.id);
+    window.closeDisclaimerModal();
+    onAgree();
+  };
+  cancelBtn.onclick = () => { window.closeDisclaimerModal(); };
+
+  modal.classList.remove('hidden');
+  modal.classList.add('flex');
+}
+
+applyTranslations();
+
+// ==========================================================================
+// PART 2: FIREBASE MODULE
+// Everything Firebase-dependent lives here. Any failure inside this module
+// is caught and reported via toast, and never blocks the UI logic above.
+// ==========================================================================
+</script>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import {
+  getAuth, GoogleAuthProvider, signInWithRedirect, getRedirectResult,
+  signOut, onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import {
+  initializeFirestore, collection, doc, setDoc, getDoc, onSnapshot, serverTimestamp,
+  query, where
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+// Firebase project config (dhangadhi-rental-msm — has a proper (default) Firestore database).
+const firebaseConfig = {
+  apiKey: "AIzaSyDFSCksw2_dLvtggwlX-npI5uH4q8ovTpE",
+  authDomain: "dhangadhi-rental-msm.firebaseapp.com",
+  projectId: "dhangadhi-rental-msm",
+  storageBucket: "dhangadhi-rental-msm.firebasestorage.app",
+  messagingSenderId: "605405140834",
+  appId: "1:605405140834:web:8b6cbd3b7536f6cb3c7e3b",
+  measurementId: "G-HYCGGM088S"
+};
+
+let app, auth, db, googleProvider;
+let firebaseReady = false;
+try {
+  app = initializeApp(firebaseConfig);
+  auth = getAuth(app);
+  // Force long-polling instead of the default WebChannel transport, which is
+  // what gets silently blocked by many ad-blockers/privacy extensions and
+  // some restrictive networks (the request just hangs instead of failing).
+  db = initializeFirestore(app, {
+    experimentalAutoDetectLongPolling: true,
+    useFetchStreams: false
+  });
+  googleProvider = new GoogleAuthProvider();
+  googleProvider.setCustomParameters({ prompt: 'select_account' });
+  firebaseReady = true;
+} catch (e) {
+  console.error("Firebase initialization failed:", e);
+  window.showToast("App could not connect to the server. Please refresh.", "error");
+}
+
+let currentUser = null;
+let rawRentalsList = [];
+let qrCodesList = [];
+let approvedRentalIds = new Set();
+let approvedListenerUnsub = null;
+window._activeRentalId = null;
+let requestListenerUnsub = null;
+let unlockedPhotos = [];
+
+// Guarantees no Firestore call can hang forever and leave a button stuck —
+// after the timeout it fails loudly with an actionable message instead.
+function withTimeout(promise, ms, label) {
+  return Promise.race([
+    promise,
+    new Promise((_, reject) => setTimeout(() => {
+      reject({ code: 'timeout', message: `${label} timed out. This is usually caused by an ad-blocker or privacy extension blocking Firestore — try again in incognito mode with extensions off, or on a different network.` });
+    }, ms))
+  ]);
+}
+
+// ==========================================
+// AUTH (Google sign-in uses a full-page redirect rather than a popup — this
+// is the reliable path in current Chrome, where popup-based Firebase Auth is
+// frequently blocked by third-party storage partitioning / popup policies.
+// The rental the user was looking at is remembered across the redirect.)
+// ==========================================
+window.handleSignOut = async () => {
+  try {
+    if (requestListenerUnsub) { requestListenerUnsub(); requestListenerUnsub = null; }
+    if (approvedListenerUnsub) { approvedListenerUnsub(); approvedListenerUnsub = null; }
+    approvedRentalIds = new Set();
+    await signOut(auth);
+    window.showToast("Signed out.", "info");
+  } catch (err) { console.error(err.code, err.message); }
+};
+
+function bindApprovedListener(uid) {
+  if (approvedListenerUnsub) approvedListenerUnsub();
+  approvedListenerUnsub = onSnapshot(
+    query(collection(db, "requests"), where("userId", "==", uid), where("approvalStatus", "==", "approved")),
+    (snap) => {
+      approvedRentalIds = new Set(snap.docs.map(d => d.data().rentalId));
+      window.filterRentals();
+    },
+    (err) => console.error("Approved-requests listener error:", err.code, err.message)
+  );
+}
+
+if (firebaseReady) {
+  onAuthStateChanged(auth, (user) => {
+    currentUser = user;
+    const headerBtn = document.getElementById('header-login-btn');
+    const badge = document.getElementById('user-badge');
+    if (user) {
+      headerBtn.classList.add('hidden');
+      badge.classList.remove('hidden'); badge.classList.add('flex');
+      document.getElementById('user-avatar').src = user.photoURL || 'https://via.placeholder.com/30';
+      document.getElementById('user-name').innerText = user.displayName ? user.displayName.split(' ')[0] : 'User';
+      bindApprovedListener(user.uid);
+    } else {
+      headerBtn.classList.remove('hidden');
+      badge.classList.add('hidden');
+      if (approvedListenerUnsub) { approvedListenerUnsub(); approvedListenerUnsub = null; }
+      approvedRentalIds = new Set();
+      window.filterRentals();
+    }
+  }, (err) => {
+    console.error("Auth state error:", err);
+    window.showToast(t('connection_issue'), "error");
+  });
+
+  // Resolve the redirect sign-in flow and reopen whatever listing the user
+  // was viewing before they were sent to Google.
+  getRedirectResult(auth).then((result) => {
+    if (result && result.user) window.showToast("Signed in successfully!", "success");
+    const pending = sessionStorage.getItem('drs_pending_rental');
+    if (pending) {
+      sessionStorage.removeItem('drs_pending_rental');
+      tryReopenPending(pending, 0);
+    }
+  }).catch((err) => {
+    if (err && err.code && err.code !== 'auth/no-current-user') {
+      console.error("Redirect sign-in error:", err.code, err.message);
+      window.showToast(`Unable to sign in (${err.code}).`, "error");
+    }
+  });
+}
+
+function tryReopenPending(rentalId, attempts) {
+  const rental = rawRentalsList.find(r => r.id === rentalId);
+  if (rental) { window.handleViewRental(rentalId); return; }
+  if (attempts < 20) setTimeout(() => tryReopenPending(rentalId, attempts + 1), 300);
+}
+
+// Sign-in uses a full-page redirect, NOT a popup. Popup-based Firebase Auth
+// is unreliable in current Chrome/Edge: third-party storage partitioning
+// often prevents the popup window from passing the sign-in result back to
+// the opener, so it just sits open full-screen and never completes. Redirect
+// does not have this problem, so it's the reliable choice here even though
+// it briefly navigates away from the page (it returns automatically once
+// Google sign-in finishes, and reopens whichever listing was open before).
+window.triggerGoogleAuth = async () => {
+  if (!firebaseReady || !auth) {
+    window.showToast(t('connection_issue'), "error");
+    return;
+  }
+  try {
+    if (window._activeRentalId) sessionStorage.setItem('drs_pending_rental', window._activeRentalId);
+    await signInWithRedirect(auth, googleProvider);
+  } catch (err) {
+    console.error("Sign-in error:", err && err.code, err && err.message);
+    const code = err && err.code;
+    if (code === 'auth/unauthorized-domain') {
+      window.showToast("This domain isn't authorized for sign-in yet. Add it under Firebase Console → Authentication → Settings → Authorized domains.", "error");
+    } else if (code === 'auth/api-key-not-valid' || code === 'auth/invalid-api-key') {
+      window.showToast("Firebase configuration error (invalid API key). Contact the site admin.", "error");
+    } else if (code === 'auth/network-request-failed') {
+      window.showToast("Network error during sign-in. Check your connection and try again.", "error");
+    } else {
+      window.showToast(`Unable to sign in (${code || 'error'}).`, "error");
+    }
+  }
+};
+
+// ==========================================
+// DATA LISTENERS
+// ==========================================
+if (firebaseReady) {
+  onSnapshot(collection(db, "qr_codes"), (snap) => {
+    qrCodesList = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+  }, (err) => console.error("QR listener error:", err.code, err.message));
+
+  onSnapshot(collection(db, "rentals"), (snap) => {
+    rawRentalsList = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+    const loadingEl = document.getElementById('rentals-loading');
+    if (loadingEl) loadingEl.classList.add('hidden');
+    populateCategoryFilter();
+    window.filterRentals();
+  }, (err) => {
+    console.error("Rentals listener error:", err.code, err.message);
+    const loadingEl = document.getElementById('rentals-loading');
+    if (loadingEl) loadingEl.classList.add('hidden');
+    window.showToast(`Unable to load listings (${err.code}).`, "error");
+  });
+} else {
+  const loadingEl = document.getElementById('rentals-loading');
+  if (loadingEl) loadingEl.classList.add('hidden');
+}
+
+function populateCategoryFilter() {
+  const select = document.getElementById('category-filter');
+  const prev = select.value || 'ALL';
+  const cats = [...new Set(rawRentalsList.map(r => r.category).filter(Boolean))];
+  select.innerHTML = `<option value="ALL">${t('category_all')}</option>` +
+    cats.map(c => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`).join('');
+  if ([...select.options].some(o => o.value === prev)) select.value = prev;
+}
+
+window.filterRentals = () => {
+  const searchEl = document.getElementById('search-input');
+  const catEl = document.getElementById('category-filter');
+  const search = (searchEl ? searchEl.value : '').toLowerCase();
+  const cat = catEl ? catEl.value : 'ALL';
+  const filtered = rawRentalsList.filter(r => {
+    const matchesSearch = (r.title || '').toLowerCase().includes(search) || (r.generalLocation || '').toLowerCase().includes(search);
+    const matchesCat = cat === 'ALL' || r.category === cat;
+    // A listing hidden by admin (manually, or automatically once someone's
+    // request for it was approved) drops off the public grid — except for
+    // the renter it was approved for, who can always still see and open it.
+    const matchesVisibility = !r.hidden || approvedRentalIds.has(r.id);
+    return matchesSearch && matchesCat && matchesVisibility;
+  });
+  renderRentalsGrid(filtered);
+};
+
+function renderRentalsGrid(rentals) {
+  const grid = document.getElementById('rentals-grid');
+  grid.innerHTML = '';
+  if (rentals.length === 0) {
+    grid.innerHTML = `<div class="col-span-full py-16 text-center card rounded-3xl">
+      <i class="fa-solid fa-house-circle-xmark text-3xl text-ink-500 mb-3"></i>
+      <p class="text-sm font-semibold text-ink-500">${t('no_listings')}</p>
+    </div>`;
+    return;
+  }
+  rentals.forEach(r => {
+    const isReserved = r.hidden && approvedRentalIds.has(r.id);
+    const card = document.createElement('div');
+    card.className = "card card-hover rounded-3xl overflow-hidden flex flex-col";
+    card.innerHTML = `
+      <div class="h-44 bg-ink-100 overflow-hidden relative">
+        <img src="${r.thumbnailUrl || ''}" alt="${escapeHtml(r.title || '')}" class="w-full h-full object-cover" onerror="this.style.display='none'">
+        ${isReserved ? `<span class="absolute top-2.5 right-2.5 text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 bg-gold-500 text-white rounded-full shadow"><i class="fa-solid fa-lock-open mr-1"></i>${t('reserved_badge')}</span>` : ''}
+      </div>
+      <div class="p-5 flex flex-col flex-1">
+        <div class="flex items-center justify-between mb-3">
+          <span class="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 bg-brand-50 text-brand-500 rounded-full">${escapeHtml(r.category || 'Rental')}</span>
+          <span class="text-xs font-bold text-gold-600 bg-gold-50 px-2.5 py-1 rounded-full">${t('viewing_fee')}: NPR ${r.serviceCharge || 0}</span>
+        </div>
+        <h3 class="font-display text-lg font-semibold mb-1">${escapeHtml(r.title || '')}</h3>
+        <p class="text-xs text-ink-500 mb-4 flex items-center gap-2">
+          <i class="fa-solid fa-location-dot text-brand-500"></i> ${escapeHtml(r.generalLocation || 'Dhangadhi')}
+        </p>
+        <div class="bg-ink-100 p-3 rounded-xl mb-4 text-xs mt-auto">
+          <span class="text-ink-500 block mb-0.5 font-semibold uppercase text-[10px] tracking-wider">${t('monthly_rent')}</span>
+          <span class="font-bold text-sm">${r.price ? 'NPR ' + r.price : 'Negotiable'}</span>
+        </div>
+        <button data-rental-id="${r.id}" class="view-details-btn btn-primary w-full font-bold py-3 rounded-xl text-sm flex items-center justify-center gap-2">
+          <span>${t('view_details')}</span><i class="fa-solid fa-arrow-right text-xs"></i>
+        </button>
+      </div>`;
+    card.querySelector('.view-details-btn').addEventListener('click', () => window.handleViewRental(r.id));
+    grid.appendChild(card);
+  });
+}
+
+// ==========================================
+// MODAL FLOW
+// Gallery (photos + videos) is public and rendered immediately for anyone.
+// The section below it — owner contact + exact location on a map — only
+// renders once the visitor is signed in, has a profile, and is approved.
+// ==========================================
+window.handleViewRental = async (rentalId) => {
+  if (!firebaseReady) { window.showToast(t('connection_issue'), "error"); return; }
+  window._activeRentalId = rentalId;
+  const rental = rawRentalsList.find(r => r.id === rentalId);
+  if (!rental) return;
+
+  document.getElementById('modal-category').innerText = rental.category || 'Rental';
+  document.getElementById('modal-title').innerText = rental.title;
+  document.getElementById('modal-gallery').innerHTML = renderGalleryHtml(rental);
+  bindGalleryEvents(rental);
+  document.getElementById('locked-section').innerHTML = `<div class="text-center py-4 text-ink-500 text-sm"><i class="fa-solid fa-spinner animate-spin mr-2"></i>Loading...</div>`;
+  openModal();
+
+  await refreshLockedSection(rental);
+};
+
+async function refreshLockedSection(rental) {
+  const target = document.getElementById('locked-section');
+  if (!currentUser) { renderAuthRequiredView(target); return; }
+
+  try {
+    const userSnap = await withTimeout(getDoc(doc(db, "users", currentUser.uid)), 15000, "Loading profile");
+    if (!userSnap.exists()) { renderProfileFormView(target); return; }
+  } catch (err) {
+    console.error(err.code, err.message);
+    window.showToast(`Error loading profile (${err.code}).`, "error");
+    return;
+  }
+
+  bindRequestListener(rental, target);
+}
+
+function bindRequestListener(rental, target) {
+  if (requestListenerUnsub) requestListenerUnsub();
+  const requestId = `${currentUser.uid}_${rental.id}`;
+  requestListenerUnsub = onSnapshot(doc(db, "requests", requestId), (snap) => {
+    if (!snap.exists()) {
+      if (isTermsAccepted(rental.id)) {
+        renderPaymentQrView(target, rental, 'unpaid');
+      } else {
+        renderTermsGateView(target, rental);
+      }
+      return;
+    }
+    const data = snap.data();
+    if (data.approvalStatus === 'approved') renderUnlockedView(target, rental.id);
+    else if (data.approvalStatus === 'rejected') renderRejectedView(target);
+    else renderPaymentQrView(target, rental, 'pending');
+  }, (err) => {
+    console.error(err.code, err.message);
+    target.innerHTML = `<div class="text-center py-6">
+      <div class="w-14 h-14 bg-bad-50 text-bad-500 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4"><i class="fa-solid fa-triangle-exclamation"></i></div>
+      <p class="text-xs text-ink-500 max-w-xs mx-auto mb-6">Error (${err.code}): ${err.message}</p>
+      <button id="retry-view-btn" class="btn-primary w-full font-bold py-3 rounded-xl text-sm">${t('retry')}</button>
+    </div>`;
+    document.getElementById('retry-view-btn').addEventListener('click', () => window.handleViewRental(rental.id));
+  });
+}
+
+// --- Gallery: public, shown before any sign-in or payment ---
+function renderGalleryHtml(rental) {
+  const photos = Array.isArray(rental.photos) ? rental.photos.filter(Boolean) : [];
+  const videos = Array.isArray(rental.videos) ? rental.videos.filter(Boolean) : [];
+  if (!photos.length && !videos.length) {
+    return `<div class="text-center py-6 text-xs text-ink-500"><i class="fa-solid fa-image mr-1.5"></i>${t('no_media')}</div>`;
+  }
+  let html = `<div class="space-y-4">`;
+  if (photos.length) {
+    html += `<div><span class="text-ink-500 font-semibold block uppercase text-[10px] tracking-wider mb-2">${t('photos_label')}</span>
+      <div class="grid grid-cols-3 gap-2" id="gallery-photos-grid"></div></div>`;
+  }
+  if (videos.length) {
+    html += `<div><span class="text-ink-500 font-semibold block uppercase text-[10px] tracking-wider mb-2">${t('videos_label')}</span>
+      <div class="grid grid-cols-2 gap-2" id="gallery-videos-grid"></div></div>`;
+  }
+  html += `</div>`;
+  return html;
+}
+
+function bindGalleryEvents(rental) {
+  const photos = Array.isArray(rental.photos) ? rental.photos.filter(Boolean) : [];
+  const videos = Array.isArray(rental.videos) ? rental.videos.filter(Boolean) : [];
+  unlockedPhotos = photos;
+  const photosGrid = document.getElementById('gallery-photos-grid');
+  if (photosGrid) {
+    photos.forEach((p, i) => {
+      const cell = document.createElement('div');
+      cell.className = "aspect-square bg-ink-100 rounded-xl overflow-hidden cursor-zoom-in";
+      cell.innerHTML = `<img src="${p}" class="w-full h-full object-cover" onerror="this.style.opacity=0.2">`;
+      cell.addEventListener('click', () => window.openLightbox(i));
+      photosGrid.appendChild(cell);
+    });
+  }
+  const videosGrid = document.getElementById('gallery-videos-grid');
+  if (videosGrid) {
+    videos.forEach(v => {
+      const id = extractYoutubeId(v);
+      if (!id) return;
+      const cell = document.createElement('div');
+      cell.className = "video-thumb aspect-video rounded-xl overflow-hidden bg-ink-100";
+      cell.innerHTML = `<img src="https://img.youtube.com/vi/${id}/hqdefault.jpg" class="w-full h-full object-cover">
+        <div class="play-badge"><i class="fa-solid fa-circle-play text-white text-3xl"></i></div>`;
+      cell.addEventListener('click', () => window.playVideo(id));
+      videosGrid.appendChild(cell);
+    });
+  }
+}
+
+function renderAuthRequiredView(target) {
+  target.innerHTML = `
+    <div class="text-center py-2">
+      <div class="w-16 h-16 bg-brand-50 text-brand-500 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4"><i class="fa-brands fa-google"></i></div>
+      <h4 class="font-bold text-lg mb-2">${t('google_required_title')}</h4>
+      <p class="text-xs text-ink-500 max-w-xs mx-auto mb-8">${t('google_required_text')}</p>
+      <button id="modal-google-btn" class="btn-primary w-full font-bold py-3.5 rounded-2xl text-sm">${t('continue_google')}</button>
+    </div>`;
+  document.getElementById('modal-google-btn').addEventListener('click', () => window.triggerGoogleAuth());
+}
+
+function renderProfileFormView(target) {
+  target.innerHTML = `
+    <div>
+      <h4 class="font-bold text-base mb-1">${t('profile_title')}</h4>
+      <p class="text-xs text-ink-500 mb-6">${t('profile_sub')}</p>
+      <form id="profile-form" class="space-y-4">
+        <div>
+          <label class="block text-[11px] font-bold uppercase text-ink-500 tracking-wider mb-1">${t('full_name')} *</label>
+          <input type="text" id="prof-name" required value="${currentUser.displayName ? escapeHtml(currentUser.displayName) : ''}" class="input w-full px-4 py-2.5 rounded-xl text-sm">
+        </div>
+        <div>
+          <label class="block text-[11px] font-bold uppercase text-ink-500 tracking-wider mb-1">${t('phone_number')} *</label>
+          <input type="tel" id="prof-phone" required pattern="[0-9]{7,10}" placeholder="98XXXXXXXX" class="input w-full px-4 py-2.5 rounded-xl text-sm">
+          <p class="text-[10px] text-ink-500 mt-1">${t('phone_required_note')}</p>
+        </div>
+        <div>
+          <label class="block text-[11px] font-bold uppercase text-ink-500 tracking-wider mb-1">${t('current_address')} *</label>
+          <input type="text" id="prof-address" required placeholder="Dhangadhi-4, Kailali" class="input w-full px-4 py-2.5 rounded-xl text-sm">
+        </div>
+        <div>
+          <label class="block text-[11px] font-bold uppercase text-ink-500 tracking-wider mb-1">${t('id_photo')} *</label>
+          <input type="file" id="prof-id-file" accept="image/*" required class="input w-full text-xs file:mr-3 file:py-2 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-brand-50 file:text-brand-500">
+        </div>
+        <button type="submit" id="prof-submit-btn" class="btn-primary w-full font-bold py-3.5 rounded-2xl text-sm mt-2">${t('save_profile')}</button>
+      </form>
+    </div>`;
+
+  document.getElementById('profile-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const phone = document.getElementById('prof-phone').value.trim();
+    if (!/^[0-9]{7,10}$/.test(phone)) {
+      window.showToast(t('phone_invalid'), "error");
+      return;
+    }
+    const btn = document.getElementById('prof-submit-btn');
+    btn.disabled = true;
+    btn.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i> ${t('saving')}`;
+    try {
+      const idFile = document.getElementById('prof-id-file').files[0];
+      let idPhotoBase64 = "";
+      if (idFile) idPhotoBase64 = await compressImage(idFile, 900, 0.6);
+
+      await withTimeout(setDoc(doc(db, "users", currentUser.uid), {
+        email: currentUser.email,
+        info: {
+          fullName: document.getElementById('prof-name').value,
+          phone: phone,
+          address: document.getElementById('prof-address').value,
+        },
+        idPhotoBase64: idPhotoBase64,
+        createdAt: serverTimestamp()
+      }), 20000, "Saving profile");
+      window.showToast("Profile saved!", "success");
+      await refreshLockedSection(rawRentalsList.find(r => r.id === window._activeRentalId));
+    } catch (err) {
+      console.error(err.code, err.message);
+      window.showToast(`Could not save profile (${err.code}).`, "error");
+      btn.disabled = false;
+      btn.innerText = t('save_profile');
+    }
+  });
+}
+
+// --- Terms gate: shown before the payment/QR step until accepted once per listing ---
+function renderTermsGateView(target, rental) {
+  target.innerHTML = `
+    <div class="text-center py-2">
+      <div class="w-16 h-16 bg-gold-50 text-gold-500 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4"><i class="fa-solid fa-file-shield"></i></div>
+      <h4 class="font-bold text-lg mb-2">${t('disclaimer_title')}</h4>
+      <p class="text-xs text-ink-500 max-w-xs mx-auto mb-8">${t('disclaimer_gate_text')}</p>
+      <button id="open-disclaimer-btn" class="btn-gold w-full font-bold py-3.5 rounded-2xl text-sm">${t('disclaimer_gate_button')}</button>
+    </div>`;
+  document.getElementById('open-disclaimer-btn').addEventListener('click', () => {
+    openDisclaimerModal(rental, () => {
+      renderPaymentQrView(target, rental, 'unpaid');
+    });
+  });
+}
+
+function renderPaymentQrView(target, rental, reqStatus) {
+  const qr = qrCodesList.find(q => q.id === rental.qrCodeId) || {};
+  target.innerHTML = `
+    <div class="text-center">
+      <div class="bg-gold-50 border border-gold-400/25 rounded-2xl p-3 text-gold-600 text-xs font-semibold mb-4 flex items-center justify-between px-4">
+        <span>${t('verification_charge')}</span>
+        <strong class="text-sm font-extrabold">NPR ${rental.serviceCharge || 0}</strong>
+      </div>
+      <p class="text-[11px] text-ink-500 flex items-center justify-center gap-1.5 mb-4">
+        <i class="fa-solid fa-circle-info text-gold-500"></i> ${t('refund_note')}
+      </p>
+      <div class="bg-ink-100 border border-gold-400/20 p-5 rounded-2xl mb-5">
+        <h5 class="font-bold text-sm mb-1">${escapeHtml(qr.title || t('default_qr_title'))}</h5>
+        <p class="text-xs text-ink-500 mb-4">${escapeHtml(qr.description || t('default_qr_desc'))}</p>
+        ${qr.qrBase64 ? `
+          <img id="qr-image" src="${qr.qrBase64}" class="w-48 h-48 object-contain mx-auto rounded-xl shadow bg-white p-2 border border-gold-400/25 mb-3">
+          <button id="download-qr-btn" type="button" class="inline-flex items-center gap-2 text-xs font-bold text-brand-500 hover:underline">
+            <i class="fa-solid fa-download"></i> ${t('download_qr')}
+          </button>
+        ` : `<div class="text-xs text-ink-500 py-8">${t('qr_pending')}</div>`}
+      </div>
+      ${reqStatus === 'pending' ? `
+        <div class="p-3.5 bg-gold-50 border border-gold-400/20 rounded-2xl text-gold-600 text-xs font-bold flex items-center justify-center gap-2.5">
+          <i class="fa-solid fa-spinner animate-spin"></i> ${t('payment_pending')}
+        </div>
+      ` : `
+        <button id="request-unlock-btn" class="btn-gold w-full font-bold py-3.5 rounded-2xl text-sm">
+          ${t('i_have_paid')}
+        </button>
+      `}
+    </div>`;
+  const unlockBtn = document.getElementById('request-unlock-btn');
+  if (unlockBtn) unlockBtn.addEventListener('click', () => submitAccessRequest(rental.id));
+  const downloadBtn = document.getElementById('download-qr-btn');
+  if (downloadBtn && qr.qrBase64) {
+    downloadBtn.addEventListener('click', () => window.downloadQr(qr.qrBase64, `payment-qr-${rental.id}.png`));
+  }
+}
+
+async function submitAccessRequest(rentalId) {
+  const btn = document.getElementById('request-unlock-btn');
+  if (btn) { btn.disabled = true; btn.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i> ${t('submitting')}`; }
+  try {
+    const requestId = `${currentUser.uid}_${rentalId}`;
+    await withTimeout(setDoc(doc(db, "requests", requestId), {
+      userId: currentUser.uid,
+      rentalId: rentalId,
+      paymentStatus: "unpaid",
+      approvalStatus: "pending",
+      requestedAt: serverTimestamp()
+    }), 15000, "Submitting request");
+    window.showToast("Request submitted for admin verification!", "success");
+  } catch (err) {
+    console.error(err.code, err.message);
+    window.showToast(`Unable to submit request (${err.code}).`, "error");
+    if (btn) { btn.disabled = false; btn.innerText = t('i_have_paid'); }
+  }
+}
+
+// --- Unlocked: owner contact + exact location, shown only once approved ---
+async function renderUnlockedView(target, rentalId) {
+  try {
+    const snap = await withTimeout(getDoc(doc(db, "rental_details", rentalId)), 15000, "Loading details");
+    const d = snap.exists() ? snap.data() : {};
+    const extraFields = Array.isArray(d.extraFields) ? d.extraFields.filter(f => f && (f.label || f.value)) : [];
+
+    target.innerHTML = `
+      <div class="space-y-4">
+        <div class="p-3.5 bg-ok-50 border border-ok-500/20 rounded-2xl text-ok-500 text-xs font-bold flex items-center gap-2.5">
+          <i class="fa-solid fa-lock-open"></i><span>${t('access_approved')}</span>
+        </div>
+        <div class="bg-ink-100 p-5 rounded-2xl border border-gold-400/20 text-xs space-y-3">
+          <div><span class="text-ink-500 font-semibold block uppercase text-[10px] tracking-wider">${t('owner_name')}</span>
+            <strong class="text-sm">${escapeHtml(d.ownerName || 'N/A')}</strong></div>
+          <div><span class="text-ink-500 font-semibold block uppercase text-[10px] tracking-wider">${t('owner_phone')}</span>
+            <a href="tel:${d.ownerPhone || ''}" class="text-brand-500 font-bold hover:underline text-sm">${escapeHtml(d.ownerPhone || 'N/A')}</a></div>
+          <div><span class="text-ink-500 font-semibold block uppercase text-[10px] tracking-wider">${t('owner_email')}</span>
+            <span>${escapeHtml(d.ownerEmail || 'N/A')}</span></div>
+          <div><span class="text-ink-500 font-semibold block uppercase text-[10px] tracking-wider">${t('exact_address')}</span>
+            <span class="font-medium">${escapeHtml(d.exactAddress || 'N/A')}</span></div>
+        </div>
+        ${d.instructions ? `
+        <div class="bg-brand-50 p-4 rounded-2xl border border-brand-500/15 text-xs">
+          <span class="text-brand-500 font-bold block uppercase text-[10px] tracking-wider mb-1">${t('instructions_label')}</span>
+          <p class="leading-relaxed">${escapeHtml(d.instructions)}</p>
+        </div>` : ''}
+        ${extraFields.length ? `
+        <div class="bg-ink-100 p-4 rounded-2xl border border-gold-400/20 text-xs space-y-3">
+          <span class="text-ink-500 font-bold block uppercase text-[10px] tracking-wider">${t('extra_label')}</span>
+          ${extraFields.map(f => `
+            <div><span class="text-ink-500 font-semibold block uppercase text-[10px] tracking-wider">${escapeHtml(f.label || '')}</span>
+              <span class="font-medium">${escapeHtml(f.value || '')}</span></div>
+          `).join('')}
+        </div>` : ''}
+        ${d.mapQuery ? `
+        <div>
+          <span class="text-ink-500 font-semibold block uppercase text-[10px] tracking-wider mb-2">${t('map_label')}</span>
+          <div id="mini-map-wrap" class="mini-map-wrap relative rounded-2xl overflow-hidden border border-gold-400/25 h-44 cursor-pointer group">
+            <iframe src="${buildMapEmbedUrl(d.mapQuery)}" class="w-full h-full" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div class="absolute inset-0 flex items-end justify-center pb-2.5 bg-gradient-to-t from-black/45 via-transparent to-transparent group-hover:from-black/55 transition-colors">
+              <span class="text-white text-xs font-bold bg-black/55 px-3.5 py-1.5 rounded-full flex items-center gap-1.5"><i class="fa-solid fa-up-right-from-square"></i>${t('open_in_maps')}</span>
+            </div>
+          </div>
+        </div>` : ''}
+      </div>`;
+
+    const mapWrap = document.getElementById('mini-map-wrap');
+    if (mapWrap) mapWrap.addEventListener('click', () => window.open(buildMapLinkUrl(d.mapQuery), '_blank', 'noopener'));
+  } catch (err) {
+    console.error(err.code, err.message);
+    target.innerHTML = `<div class="text-center py-6">
+      <div class="w-14 h-14 bg-bad-50 text-bad-500 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4"><i class="fa-solid fa-triangle-exclamation"></i></div>
+      <p class="text-xs text-ink-500 max-w-xs mx-auto">Error (${err.code}): ${err.message}</p>
+    </div>`;
+    window.showToast(`Error loading details (${err.code}).`, "error");
+  }
+}
+
+function renderRejectedView(target) {
+  target.innerHTML = `
+    <div class="text-center py-2">
+      <div class="w-14 h-14 bg-bad-50 text-bad-500 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4"><i class="fa-solid fa-circle-xmark"></i></div>
+      <h4 class="font-bold text-base mb-2">${t('request_not_approved_title')}</h4>
+      <p class="text-xs text-ink-500 max-w-xs mx-auto">${t('request_not_approved_text')}</p>
+    </div>`;
+}
+
+// ==========================================
+// GOOGLE MAPS (free embeddable iframe — no API key/billing needed)
+// Admin enters either a plain address/place name, a "lat,lng" pair, or a
+// pasted Google Maps share link; we build both a small embed and a link out
+// to full Google Maps from whatever was entered.
+// ==========================================
+function extractMapQuery(raw) {
+  const trimmed = (raw || '').trim();
+  const atMatch = trimmed.match(/@(-?\d+\.\d+),(-?\d+\.\d+)/);
+  if (atMatch) return `${atMatch[1]},${atMatch[2]}`;
+  const qMatch = trimmed.match(/[?&]q=([^&]+)/);
+  if (qMatch) return decodeURIComponent(qMatch[1]);
+  const placeMatch = trimmed.match(/\/maps\/place\/([^/@]+)/);
+  if (placeMatch) return decodeURIComponent(placeMatch[1].replace(/\+/g, ' '));
+  return trimmed;
+}
+function buildMapEmbedUrl(raw) {
+  const q = extractMapQuery(raw);
+  return `https://www.google.com/maps?q=${encodeURIComponent(q)}&output=embed`;
+}
+function buildMapLinkUrl(raw) {
+  const trimmed = (raw || '').trim();
+  if (/^https?:\/\//i.test(trimmed)) return trimmed;
+  return `https://www.google.com/maps?q=${encodeURIComponent(trimmed)}`;
+}
+
+// ==========================================
+// IMAGE COMPRESSION (client-side, for profile ID photo)
+// Targets well under 100KB by compressing then iterating quality/size down.
+// ==========================================
+function compressImage(file, maxDim, quality) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onerror = () => reject(new Error("Could not read file"));
+    reader.readAsDataURL(file);
+    reader.onload = (e) => {
+      const img = new Image();
+      img.onerror = () => reject(new Error("Could not decode image"));
+      img.src = e.target.result;
+      img.onload = () => {
+        let w = img.width, h = img.height;
+        const targetDim = maxDim;
+        if (w > h && w > targetDim) { h = Math.round(h * targetDim / w); w = targetDim; }
+        else if (h > targetDim) { w = Math.round(w * targetDim / h); h = targetDim; }
+        const canvas = document.createElement('canvas');
+        canvas.width = w; canvas.height = h;
+        canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+
+        let q = quality;
+        let result = canvas.toDataURL('image/webp', q);
+        let attempts = 0;
+        const maxBase64Chars = 100 * 1024 * 1.37;
+        while (result.length > maxBase64Chars && attempts < 6) {
+          q = Math.max(0.35, q - 0.15);
+          result = canvas.toDataURL('image/webp', q);
+          attempts++;
+        }
+        resolve(result);
+      };
+    };
+  });
+}
+
+// ==========================================
+// QR DOWNLOAD
+// Converts the QR data URI into a Blob before triggering the download —
+// more reliable across browsers than relying on the anchor "download"
+// attribute directly on a data: URI (which some mobile browsers ignore).
+// ==========================================
+window.downloadQr = async (dataUri, filename) => {
+  try {
+    const res = await fetch(dataUri);
+    const blob = await res.blob();
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename || 'payment-qr.png';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1500);
+  } catch (err) {
+    console.error("QR download error:", err);
+    window.showToast("Could not download QR. Long-press the image to save it instead.", "error");
+  }
+};
+
+// ==========================================
+// YOUTUBE HELPERS
+// ==========================================
+function extractYoutubeId(url) {
+  if (!url) return null;
+  const patterns = [
+    /(?:youtube\.com\/watch\?v=|youtube\.com\/live\/|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/shorts\/)([a-zA-Z0-9_-]{11})/
+  ];
+  for (const p of patterns) {
+    const m = url.match(p);
+    if (m) return m[1];
+  }
+  if (/^[a-zA-Z0-9_-]{11}$/.test(url.trim())) return url.trim();
+  return null;
+}
+
+window.playVideo = (videoId) => {
+  const holder = document.getElementById('video-iframe-holder');
+  holder.innerHTML = `<iframe class="w-full h-full" src="https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&playsinline=1" title="Video" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+  document.getElementById('video-modal').classList.remove('hidden');
+  document.getElementById('video-modal').classList.add('flex');
+};
+window.closeVideo = () => {
+  document.getElementById('video-iframe-holder').innerHTML = '';
+  document.getElementById('video-modal').classList.add('hidden');
+  document.getElementById('video-modal').classList.remove('flex');
+};
+
+// ==========================================
+// PHOTO LIGHTBOX (zoom + pan + navigate)
+// ==========================================
+let lbIndex = 0, lbScale = 1, lbPanX = 0, lbPanY = 0, lbDragging = false, lbStartX = 0, lbStartY = 0;
+
+window.openLightbox = (index) => {
+  lbIndex = index;
+  lightboxRender();
+  document.getElementById('photo-lightbox').classList.remove('hidden');
+  document.getElementById('photo-lightbox').classList.add('flex');
+};
+window.closeLightbox = () => {
+  document.getElementById('photo-lightbox').classList.add('hidden');
+  document.getElementById('photo-lightbox').classList.remove('flex');
+};
+window.lightboxNav = (dir) => {
+  lbIndex = (lbIndex + dir + unlockedPhotos.length) % unlockedPhotos.length;
+  lightboxRender();
+};
+function lightboxRender() {
+  document.getElementById('lightbox-img').src = unlockedPhotos[lbIndex];
+  document.getElementById('lightbox-counter').innerText = `${lbIndex + 1} / ${unlockedPhotos.length}`;
+  window.lightboxReset();
+}
+window.lightboxReset = () => {
+  lbScale = 1; lbPanX = 0; lbPanY = 0;
+  applyLightboxTransform();
+  document.getElementById('lightbox-zoom-wrap').classList.remove('zoomed');
+};
+window.lightboxZoom = (delta) => {
+  lbScale = Math.min(4, Math.max(1, lbScale + delta));
+  applyLightboxTransform();
+  document.getElementById('lightbox-zoom-wrap').classList.toggle('zoomed', lbScale > 1);
+};
+function applyLightboxTransform() {
+  document.getElementById('lightbox-img').style.transform = `translate(${lbPanX}px, ${lbPanY}px) scale(${lbScale})`;
+}
+const lbWrap = document.getElementById('lightbox-zoom-wrap');
+lbWrap.addEventListener('wheel', (e) => { e.preventDefault(); window.lightboxZoom(e.deltaY < 0 ? 0.3 : -0.3); }, { passive: false });
+lbWrap.addEventListener('dblclick', () => { lbScale === 1 ? window.lightboxZoom(1.5) : window.lightboxReset(); });
+lbWrap.addEventListener('mousedown', (e) => {
+  if (lbScale <= 1) return;
+  lbDragging = true; lbStartX = e.clientX - lbPanX; lbStartY = e.clientY - lbPanY;
+  lbWrap.classList.add('dragging');
+});
+window.addEventListener('mousemove', (e) => {
+  if (!lbDragging) return;
+  lbPanX = e.clientX - lbStartX; lbPanY = e.clientY - lbStartY;
+  applyLightboxTransform();
+});
+window.addEventListener('mouseup', () => { lbDragging = false; lbWrap.classList.remove('dragging'); });
+let lastTouchDist = null;
+lbWrap.addEventListener('touchstart', (e) => {
+  if (e.touches.length === 1 && lbScale > 1) {
+    lbDragging = true; lbStartX = e.touches[0].clientX - lbPanX; lbStartY = e.touches[0].clientY - lbPanY;
+  } else if (e.touches.length === 2) {
+    lastTouchDist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+  }
+});
+lbWrap.addEventListener('touchmove', (e) => {
+  if (e.touches.length === 1 && lbDragging) {
+    lbPanX = e.touches[0].clientX - lbStartX; lbPanY = e.touches[0].clientY - lbStartY;
+    applyLightboxTransform();
+  } else if (e.touches.length === 2 && lastTouchDist) {
+    const dist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+    const delta = (dist - lastTouchDist) / 100;
+    lastTouchDist = dist;
+    window.lightboxZoom(delta);
+  }
+}, { passive: true });
+lbWrap.addEventListener('touchend', () => { lbDragging = false; lastTouchDist = null; });
+
+// ==========================================
+// MODAL CONTROL
+// ==========================================
+function openModal() {
+  document.getElementById('rental-modal').classList.remove('hidden');
+  document.getElementById('rental-modal').classList.add('flex');
+}
+window.closeModal = () => {
+  if (requestListenerUnsub) { requestListenerUnsub(); requestListenerUnsub = null; }
+  document.getElementById('rental-modal').classList.add('hidden');
+  document.getElementById('rental-modal').classList.remove('flex');
+};
+</script>
+</body>
+</html>
