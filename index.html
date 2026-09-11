@@ -599,7 +599,7 @@ applyTranslations();
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import {
-  getAuth, GoogleAuthProvider, signInWithRedirect, getRedirectResult,
+  getAuth, GoogleAuthProvider, signInWithPopup, signInWithRedirect, getRedirectResult,
   signOut, onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 import {
@@ -732,32 +732,57 @@ function tryReopenPending(rentalId, attempts) {
   if (attempts < 20) setTimeout(() => tryReopenPending(rentalId, attempts + 1), 300);
 }
 
-// Sign-in uses a full-page redirect, NOT a popup. Popup-based Firebase Auth
-// is unreliable in current Chrome/Edge: third-party storage partitioning
-// often prevents the popup window from passing the sign-in result back to
-// the opener, so it just sits open full-screen and never completes. Redirect
-// does not have this problem, so it's the reliable choice here even though
-// it briefly navigates away from the page (it returns automatically once
-// Google sign-in finishes, and reopens whichever listing was open before).
+// Sign-in opens Google's small popup window (signInWithPopup). Note: the
+// ACTUAL SIZE of that window is decided by the browser, not by this code —
+// Chrome/Edge both have a setting that forces all popups to open as full
+// tabs instead of small windows (in Edge: Settings → Cookies and site
+// permissions → Pop-ups and redirects → "Open pop-up windows in a new tab
+// instead of a new window" — turn that OFF to get the small window back).
+// We only fall back to a full-page redirect if the popup genuinely fails to
+// open at all (blocked outright, or an in-app browser that doesn't support
+// popups), since redirect always works as a last resort.
+const POPUP_FALLBACK_CODES = new Set([
+  'auth/popup-blocked',
+  'auth/operation-not-supported-in-this-environment',
+  'auth/web-storage-unsupported'
+]);
+
+function reportSignInError(err) {
+  console.error("Sign-in error:", err && err.code, err && err.message);
+  const code = err && err.code;
+  if (code === 'auth/unauthorized-domain') {
+    window.showToast("This domain isn't authorized for sign-in yet. Add it under Firebase Console → Authentication → Settings → Authorized domains.", "error");
+  } else if (code === 'auth/api-key-not-valid' || code === 'auth/invalid-api-key') {
+    window.showToast("Firebase configuration error (invalid API key). Contact the site admin.", "error");
+  } else if (code === 'auth/network-request-failed') {
+    window.showToast("Network error during sign-in. Check your connection and try again.", "error");
+  } else {
+    window.showToast(`Unable to sign in (${code || 'error'}).`, "error");
+  }
+}
+
 window.triggerGoogleAuth = async () => {
   if (!firebaseReady || !auth) {
     window.showToast(t('connection_issue'), "error");
     return;
   }
   try {
-    if (window._activeRentalId) sessionStorage.setItem('drs_pending_rental', window._activeRentalId);
-    await signInWithRedirect(auth, googleProvider);
+    const result = await signInWithPopup(auth, googleProvider);
+    if (result && result.user) window.showToast("Signed in successfully!", "success");
   } catch (err) {
-    console.error("Sign-in error:", err && err.code, err && err.message);
     const code = err && err.code;
-    if (code === 'auth/unauthorized-domain') {
-      window.showToast("This domain isn't authorized for sign-in yet. Add it under Firebase Console → Authentication → Settings → Authorized domains.", "error");
-    } else if (code === 'auth/api-key-not-valid' || code === 'auth/invalid-api-key') {
-      window.showToast("Firebase configuration error (invalid API key). Contact the site admin.", "error");
-    } else if (code === 'auth/network-request-failed') {
-      window.showToast("Network error during sign-in. Check your connection and try again.", "error");
+    // User closed the popup or a second click superseded the first — not a
+    // real error, say nothing.
+    if (code === 'auth/popup-closed-by-user' || code === 'auth/cancelled-popup-request') return;
+    if (POPUP_FALLBACK_CODES.has(code)) {
+      try {
+        if (window._activeRentalId) sessionStorage.setItem('drs_pending_rental', window._activeRentalId);
+        await signInWithRedirect(auth, googleProvider);
+      } catch (err2) {
+        reportSignInError(err2);
+      }
     } else {
-      window.showToast(`Unable to sign in (${code || 'error'}).`, "error");
+      reportSignInError(err);
     }
   }
 };
